@@ -26,11 +26,27 @@
             text-align: center;
         }
 
-        h1 {
-            color: #1F4E79;
-            margin-top: 0;
+        /* --- NOVO ESTILO PARA O CABEÇALHO COM AS IMAGENS --- */
+        .header-bolao {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px; /* Espaço entre as imagens e o texto */
             margin-bottom: 10px;
         }
+
+        .header-bolao h1 {
+            color: #1F4E79;
+            margin: 0; /* Margem zerada para alinhar perfeitamente com as imagens */
+            font-size: 2.2em;
+        }
+
+        .icone-decorativo {
+            width: 60px; /* Tamanho das imagens da taça e da bola. Pode alterar se quiser maior/menor */
+            height: auto;
+            object-fit: contain;
+        }
+        /* --------------------------------------------------- */
 
         .atualizacao {
             font-size: 0.9em;
@@ -40,6 +56,7 @@
             border-radius: 20px;
             display: inline-block;
             margin-bottom: 30px;
+            margin-top: 10px;
         }
 
         .placares {
@@ -72,7 +89,14 @@
 <body>
 
     <div class="container">
-        <h1>🏆 Resultados do Bolão</h1>
+        
+        <div class="header-bolao">
+            <img src="https://github.com/4drno/placar/blob/main/taca_copa.png?raw=true" alt="Taça da Copa" class="icone-decorativo">
+            
+            <h1>Resultados do Bolão</h1>
+            
+            <img src="https://github.com/4drno/placar/blob/main/bola_copa.png?raw=true" alt="Bola da Copa" class="icone-decorativo">
+        </div>
         
         <div class="atualizacao" id="data-atualizacao">
             Última atualização: Carregando...
@@ -92,8 +116,6 @@
     </div>
 
     <script>
-        // Lógica para ler o arquivo .txt do GitHub
-        // SUBSTITUA O LINK ABAIXO
         const urlArquivoTxt = 'https://raw.githubusercontent.com/4drno/placar/refs/heads/main/ultima_atualizacao.txt';
 
         fetch(urlArquivoTxt)
@@ -102,7 +124,6 @@
                 return response.text();
             })
             .then(texto => {
-                // Coloca o texto lido dentro da caixinha HTML
                 document.getElementById('data-atualizacao').innerText = 'Última atualização: ' + texto;
             })
             .catch(erro => {
