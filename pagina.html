@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏆 Placar do Bolão</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 1000px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #1F4E79;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .atualizacao {
+            font-size: 0.9em;
+            color: #666;
+            background-color: #e9ecef;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        .placares {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .placar-item {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .placar-item h2 {
+            font-size: 1.2em;
+            color: #444;
+            margin-bottom: 15px;
+        }
+
+        .placar-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🏆 Resultados do Bolão</h1>
+        
+        <div class="atualizacao" id="data-atualizacao">
+            Última atualização: Carregando...
+        </div>
+
+        <div class="placares">
+            <div class="placar-item">
+                <h2>Placar Geral</h2>
+                <img src="https://raw.githubusercontent.com/4drno/placar/refs/heads/main/placar_bolao.png" alt="Placar do Bolão">
+            </div>
+
+            <div class="placar-item">
+                <h2>Ranking dos Times</h2>
+                <img src="https://raw.githubusercontent.com/4drno/placar/refs/heads/main/placar_times.png" alt="Placar dos Times">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Lógica para ler o arquivo .txt do GitHub
+        // SUBSTITUA O LINK ABAIXO
+        const urlArquivoTxt = 'https://raw.githubusercontent.com/4drno/placar/refs/heads/main/ultima_atualizacao.txt';
+
+        fetch(urlArquivoTxt)
+            .then(response => {
+                if (!response.ok) throw new Error('Erro ao buscar o arquivo');
+                return response.text();
+            })
+            .then(texto => {
+                // Coloca o texto lido dentro da caixinha HTML
+                document.getElementById('data-atualizacao').innerText = 'Última atualização: ' + texto;
+            })
+            .catch(erro => {
+                document.getElementById('data-atualizacao').innerText = 'Última atualização: Indisponível no momento';
+                console.error(erro);
+            });
+    </script>
+
+</body>
+</html>
