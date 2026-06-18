@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <meta http-equiv="refresh" content="300">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🏆 Placar do Bolão</title>
@@ -26,23 +27,23 @@
             text-align: center;
         }
 
-        /* --- NOVO ESTILO PARA O CABEÇALHO COM AS IMAGENS --- */
+        /* --- ESTILO PARA O CABEÇALHO COM AS IMAGENS --- */
         .header-bolao {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 15px; /* Espaço entre as imagens e o texto */
+            gap: 15px; 
             margin-bottom: 10px;
         }
 
         .header-bolao h1 {
             color: #1F4E79;
-            margin: 0; /* Margem zerada para alinhar perfeitamente com as imagens */
+            margin: 0; 
             font-size: 2.2em;
         }
 
         .icone-decorativo {
-            width: 60px; /* Tamanho das imagens da taça e da bola. Pode alterar se quiser maior/menor */
+            width: 60px; 
             height: auto;
             object-fit: contain;
         }
@@ -58,6 +59,28 @@
             margin-bottom: 30px;
             margin-top: 10px;
         }
+
+        /* --- NOVO ESTILO: PLACAR AO VIVO --- */
+        .placar-ao-vivo {
+            width: 100%;
+            margin-bottom: 40px; /* Espaço antes de mostrar os outros placares */
+        }
+
+        .placar-ao-vivo h2 {
+            font-size: 1.4em;
+            color: #d9534f; /* Cor diferente (vermelha) para dar sensação de "Ao Vivo" */
+            margin-bottom: 15px;
+        }
+
+        .placar-ao-vivo img {
+            width: 100%; /* Força a imagem a preencher o espaço horizontal */
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: 1px solid #ddd;
+        }
+        /* --------------------------------------------------- */
 
         .placares {
             display: flex;
@@ -100,6 +123,11 @@
         
         <div class="atualizacao" id="data-atualizacao">
             Última atualização: Carregando...
+        </div>
+
+        <div class="placar-ao-vivo">
+            <h2>🔴 Placar ao Vivo</h2>
+            <img src="https://raw.githubusercontent.com/4drno/placar/refs/heads/main/placar_ao_vivo.png" alt="Placar ao Vivo">
         </div>
 
         <div class="placares">
