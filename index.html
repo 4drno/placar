@@ -107,6 +107,40 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             border: 1px solid #ddd;
         }
+        /* --- Seleções do mata-mata --- */
+
+.selecoes-container {
+    width: 100%;
+    margin-bottom: 35px;
+}
+
+.botao-selecoes {
+    background-color: #1F4E79;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.botao-selecoes:hover {
+    background-color: #163b5c;
+}
+
+.imagem-escondida {
+    display: none;
+    margin-top: 20px;
+}
+
+.imagem-escondida img {
+    width: 100%;
+    max-width: 900px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border: 1px solid #ddd;
+}
     </style>
 </head>
 <body>
@@ -129,6 +163,17 @@
             <h2>🔴 Placar ao Vivo</h2>
             <img src="https://raw.githubusercontent.com/4drno/placar/refs/heads/main/placar_ao_vivo.png" alt="Placar ao Vivo">
         </div>
+
+        <div class="selecoes-container">
+    <button id="toggleSelecoes" class="botao-selecoes">
+        🏆 Ver seleções classificadas
+    </button>
+
+    <div id="imagemSelecoes" class="imagem-escondida">
+        <img src="https://raw.githubusercontent.com/4drno/placar/refs/heads/main/selecoes_mata_mata.png"
+             alt="Seleções classificadas para o mata-mata">
+    </div>
+</div>
 
         <div class="placares">
             <div class="placar-item">
@@ -158,6 +203,18 @@
                 document.getElementById('data-atualizacao').innerText = 'Última atualização: Indisponível no momento';
                 console.error(erro);
             });
+            const botao = document.getElementById('toggleSelecoes');
+const imagem = document.getElementById('imagemSelecoes');
+
+botao.addEventListener('click', () => {
+    if (imagem.style.display === 'block') {
+        imagem.style.display = 'none';
+        botao.textContent = '🏆 Ver seleções classificadas';
+    } else {
+        imagem.style.display = 'block';
+        botao.textContent = '❌ Ocultar seleções';
+    }
+});
     </script>
 
 </body>
